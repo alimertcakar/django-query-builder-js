@@ -1,0 +1,20 @@
+{
+  "name": "django-query-builder-js",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc-watch --onSuccess \"node ./build/index.js\""
+  },
+  "keywords": [],
+  "author": "Ali Mert Çakar",
+  "license": "ISC",
+  "dependencies": {
+    "tsc-watch": "^6.2.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
