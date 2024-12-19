@@ -1,7 +1,7 @@
 "use strict";
 const postfixes = [
     "__exact",
-    "__exact",
+    "__iexact",
     "__contains",
     "__icontains",
     "__in",
@@ -52,3 +52,4 @@ function buildQueryParams() {
     });
 }
 console.log(buildQueryParams().status().__in([1, 2, 3, 4]).parse());
+console.log(buildQueryParams().name("John").__iexact().parse());
