@@ -27,15 +27,10 @@ const postfixes = [
     "__second",
     "__range",
 ];
-function getParams() {
+function buildQueryParams() {
     return new Proxy({}, {
         get: (target, prop) => {
             return (value) => {
-                const postfixFn = (postfix) => ({
-                    parse: () => {
-                        return { [prop + postfix]: value };
-                    },
-                });
                 const _postfixes = Object.fromEntries(postfixes.map((postfix) => [
                     postfix,
                     (postfixValue) => ({
@@ -56,4 +51,4 @@ function getParams() {
         },
     });
 }
-console.log(getParams().status().__in([1, 2, 3, 4]).parse());
+console.log(buildQueryParams().status().__in([1, 2, 3, 4]).parse());

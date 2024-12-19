@@ -36,18 +36,12 @@ type Params = {
   [key: string]: ParamFunction<any>;
 };
 
-function getParams(): Params {
+function buildQueryParams(): Params {
   return new Proxy(
     {},
     {
       get: (target, prop: string) => {
         return (value: any) => {
-          const postfixFn = (postfix: string) => ({
-            parse: () => {
-              return { [prop + postfix]: value };
-            },
-          });
-
           const _postfixes = Object.fromEntries(
             postfixes.map((postfix) => [
               postfix,
@@ -73,4 +67,4 @@ function getParams(): Params {
   ) as Params;
 }
 
-console.log(getParams().status().__in([1, 2, 3, 4]).parse());
+console.log(buildQueryParams().status().__in([1, 2, 3, 4]).parse());
